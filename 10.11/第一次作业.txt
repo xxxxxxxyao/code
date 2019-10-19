@@ -1,0 +1,45 @@
+1.写代码实现: 给定两个 int 变量, 交换变量的值. 
+public class change
+{
+    public static void main(String [] args)
+	{
+	int a=10;
+	int b=12;
+	a=a^b;
+	b=a^b;
+	a=a^b;
+	System.out.println("a="+a+",b="+b+"");
+	}
+}
+
+2.写代码实现: 给定三个 int 变量, 求其中的最大值和最小值. 
+public class max
+{
+    public static void main(String [] args)
+	{
+	int a=999;
+	int b=12;
+	int c=122;
+	int d=0;
+	if(b<c)
+	{
+	d=b;
+	b=c;
+	c=d;
+	}
+	if(a<c)
+	{
+	  d=a;
+	  a=c;
+	  c=a;
+	}
+	if(a<b)
+	{
+	  d=a;
+	  a=b;
+	  b=a;
+	}
+	   System.out.println("MAX="+a+",MIN="+c+"");
+	  }
+}
+
