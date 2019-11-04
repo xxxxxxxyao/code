@@ -229,8 +229,8 @@ class ListNode{
                 ListNode afterStart = null;
                 ListNode afterEnd = null;
                 while (cur != null) {
-                        ListNode curnext=cur.next;
-                        cur.next=null;
+                        //ListNode curnext=cur.next;
+                        //cur.next=null;
                         //cur.data < x
                         if(cur.data < x) {
                                 //第一次插入
@@ -252,15 +252,15 @@ class ListNode{
 
                                         }
                                 }
-                                cur=curnext;
+                                cur=cur.next;
                         }
                         if(beforeStart==null){
                                 return afterStart;
                         }
                         beforeEnd.next=afterStart;
-                       /* if(afterStart!=null){
+                        if(afterStart!=null){
                                 afterEnd.next.=null;
-                        }*/
+                        }
                         return beforeStart;
                 }
 
