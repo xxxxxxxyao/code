@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e57d8a3-b7c6-4dda-91f3-706116ab2766" name="Default" comment="" />
+    <list default="true" id="27eca4ce-3dd5-49cf-9d80-ee5816d4e039" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +15,11 @@
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+            <state relative-caret-position="209">
+              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding>
-                <element signature="e#120#121#0" expanded="true" />
-                <element signature="e#144#145#0" expanded="true" />
+                <element signature="e#226#227#0" expanded="true" />
+                <element signature="e#246#247#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,8 +51,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="610" />
-    <option name="y" value="46" />
+    <option name="x" value="895" />
+    <option name="y" value="93" />
     <option name="width" value="951" />
     <option name="height" value="974" />
   </component>
@@ -61,23 +61,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="20191111" type="b2602c69:ProjectViewProjectNode" />
-              <item name="20191111" type="462c0819:PsiDirectoryNode" />
+              <item name="201911 11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="201911 11" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="20191111" type="b2602c69:ProjectViewProjectNode" />
-              <item name="20191111" type="462c0819:PsiDirectoryNode" />
+              <item name="201911 11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="201911 11" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -103,7 +103,7 @@
   <component name="RunManager">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="20191111" />
+      <module name="201911 11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -158,17 +158,17 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6e57d8a3-b7c6-4dda-91f3-706116ab2766" name="Default" comment="" />
-      <created>1573456450920</created>
+      <changelist id="27eca4ce-3dd5-49cf-9d80-ee5816d4e039" name="Default" comment="" />
+      <created>1573461959210</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573456450920</updated>
-      <workItem from="1573456455851" duration="4433000" />
+      <updated>1573461959210</updated>
+      <workItem from="1573461962639" duration="2542000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4433000" />
+    <option name="totallyTimeSpent" value="2542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -188,13 +188,13 @@
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24980484" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.516129" />
       <window_info anchor="right" id="Database" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
       <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39965987" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -210,14 +210,19 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        <state relative-caret-position="209">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding>
-            <element signature="e#120#121#0" expanded="true" />
-            <element signature="e#144#145#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
           </folding>
         </state>
       </provider>
