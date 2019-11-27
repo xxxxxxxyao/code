@@ -1,0 +1,99 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#define OVERFLOW -1
+
+typedef int Elemtype;    //定义数据元素类型
+
+typedef struct Cnode     //结点类型定义
+{
+	Elemtype data;
+	struct Cnode *next;
+}CNode;
+
+CNode *joseph;             //定义全局变量
+
+//创建单循环链表
+int Creat_list(CNode *clist, int n)
+{
+	CNode *p=NULL;
+	CNode *q=NULL;
+	int i;
+	clist = NULL;
+	for (i = n; i >= 1; i--)
+	{
+		p = (CNode *)malloc(sizeof(CNode));
+		if (p == NULL)
+		{
+			return OVERFLOW;    //存储分配失败
+		}
+		p->data = i;              //赋值
+		p->next = clist;
+		clist = p;
+		if (i == n)
+			q = p;             //q指向尾部
+	}
+		q->next = clist;         //尾部和头部连接起来建立循环链表
+		joseph = clist;          //将创建好的循环链表头指针赋给全局变量
+		return 1;
+}
+
+//寻找指定元素输出
+int Joseph(CNode *clist, int m, int n, int k)
+{
+	int i;
+	CNode *p, *q;
+	if (m > n)                 //起始位置不对
+	{
+		return -1;
+	}
+	if (!Creat_list(clist, n))
+	{
+		return -1;           //链表创建失败
+	}
+	p = joseph;               //p指向创建好的循环链表
+	for (i = 1; i < m; i++)
+	{
+		p = p->next;                   //*p指向m位置的结点
+	}
+	while (p)
+	{
+		for (i = 1; i < k - 1; i++)    //找到要输出结点的前一个结点
+			p = p->next;
+		q = p->next;                    //q指向要输出的结点
+		printf(" %d", q->data);
+		if (p->next == p)
+		{
+			p = NULL;                  //删除最后一个结点
+		}
+		else
+		{
+			p->next = q->next;          
+			p = p->next;                 
+			free(q);
+		}
+	}
+	clist = NULL;
+	return 1;
+}
+
+void main()
+{
+	int m=0;
+	int n = 0;
+	int k = 0;
+	CNode *clist;
+	clist = NULL;                    //初始化clist
+	printf("请输入圆桌总人数：", n);
+	scanf("%d", &n);
+	printf("请输入首次开始报数的位置：", m);
+	scanf("%d", &m);
+	printf("第几个人出列？", k);
+	scanf("%d", &k);
+	Creat_list(clist, n);
+	printf("输出序列如下：\n");
+	Joseph(clist, m, n, k);
+	printf("\n");
+	system("pause");
+
+}
