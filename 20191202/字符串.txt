@@ -1,0 +1,22 @@
+//输入abc def    输出abcdef
+
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        String s=scanner.nextLine();
+        String ss=func(s);
+        System.out.println(ss);
+    }
+    
+    
+    public static String func(String str){
+        String[] str1=str.split(" ");
+        String ret="";
+        for(String s:str1){
+            ret += s;
+        }
+        return ret;
+    }
+}
