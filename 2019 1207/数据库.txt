@@ -1,0 +1,170 @@
+mysql> use class_13_db_3;
+Database changed
+mysql> create table stu_score(
+    -> name varchar(20),
+    -> sn   int,
+    -> chinese int,
+    -> math int,
+    -> english int,
+    -> structure int,
+    -> databox int
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show tables;
++-------------------------+
+| Tables_in_class_13_db_3 |
++-------------------------+
+| score                   |
+| stu_score               |
+| student                 |
++-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc stu_score;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| name      | varchar(20) | YES  |     | NULL    |       |
+| sn        | int(11)     | YES  |     | NULL    |       |
+| chinese   | int(11)     | YES  |     | NULL    |       |
+| math      | int(11)     | YES  |     | NULL    |       |
+| english   | int(11)     | YES  |     | NULL    |       |
+| structure | int(11)     | YES  |     | NULL    |       |
+| databox   | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> insert into stu_score values('xiaoming',1740,90,98,97,96,95);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stu_score values('xiaohua',1741,94,58,87,96,95);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stu_score(name,math,english) values('liuming',89,88);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stu_score(name,english,databox) values('chenshu',67,88);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from stu_score;
++----------+------+---------+------+---------+-----------+---------+
+| name     | sn   | chinese | math | english | structure | databox |
++----------+------+---------+------+---------+-----------+---------+
+| xiaoming | 1740 |      90 |   98 |      97 |        96 |      95 |
+| xiaohua  | 1741 |      94 |   58 |      87 |        96 |      95 |
+| liuming  | NULL |    NULL |   89 |      88 |      NULL |    NULL |
+| chenshu  | NULL |    NULL | NULL |      67 |      NULL |      88 |
++----------+------+---------+------+---------+-----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select chinese+math+english+structure+databox as total from stu_score;
++-------+
+| total |
++-------+
+|   476 |
+|   430 |
+|  NULL |
+|  NULL |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from stu_score order by chinese+math+english+structure+databox;
++----------+------+---------+------+---------+-----------+---------+
+| name     | sn   | chinese | math | english | structure | databox |
++----------+------+---------+------+---------+-----------+---------+
+| liuming  | NULL |    NULL |   89 |      88 |      NULL |    NULL |
+| chenshu  | NULL |    NULL | NULL |      67 |      NULL |      88 |
+| xiaohua  | 1741 |      94 |   58 |      87 |        96 |      95 |
+| xiaoming | 1740 |      90 |   98 |      97 |        96 |      95 |
++----------+------+---------+------+---------+-----------+---------+
+4 rows in set (0.01 sec)
+
+mysql> select * from stu_score order by chinese+math+english+structure+databox desc;
++----------+------+---------+------+---------+-----------+---------+
+| name     | sn   | chinese | math | english | structure | databox |
++----------+------+---------+------+---------+-----------+---------+
+| xiaoming | 1740 |      90 |   98 |      97 |        96 |      95 |
+| xiaohua  | 1741 |      94 |   58 |      87 |        96 |      95 |
+| liuming  | NULL |    NULL |   89 |      88 |      NULL |    NULL |
+| chenshu  | NULL |    NULL | NULL |      67 |      NULL |      88 |
++----------+------+---------+------+---------+-----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from stu_score order by english desc;
++----------+------+---------+------+---------+-----------+---------+
+| name     | sn   | chinese | math | english | structure | databox |
++----------+------+---------+------+---------+-----------+---------+
+| xiaoming | 1740 |      90 |   98 |      97 |        96 |      95 |
+| liuming  | NULL |    NULL |   89 |      88 |      NULL |    NULL |
+| xiaohua  | 1741 |      94 |   58 |      87 |        96 |      95 |
+| chenshu  | NULL |    NULL | NULL |      67 |      NULL |      88 |
++----------+------+---------+------+---------+-----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select name from stu_score where english<60 and math<60;
+Empty set (0.01 sec)
+
+mysql> select name from stu_score where math between 80 and 90;
++---------+
+| name    |
++---------+
+| liuming |
++---------+
+1 row in set (0.01 sec)
+
+mysql> select name from stu_score where math<=>null;
++---------+
+| name    |
++---------+
+| chenshu |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select * from stu_score order by math limit 2;
++---------+------+---------+------+---------+-----------+---------+
+| name    | sn   | chinese | math | english | structure | databox |
++---------+------+---------+------+---------+-----------+---------+
+| chenshu | NULL |    NULL | NULL |      67 |      NULL |      88 |
+| xiaohua | 1741 |      94 |   58 |      87 |        96 |      95 |
++---------+------+---------+------+---------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from stu_score order by math limit 2 offset 1;
++---------+------+---------+------+---------+-----------+---------+
+| name    | sn   | chinese | math | english | structure | databox |
++---------+------+---------+------+---------+-----------+---------+
+| xiaohua | 1741 |      94 |   58 |      87 |        96 |      95 |
+| liuming | NULL |    NULL |   89 |      88 |      NULL |    NULL |
++---------+------+---------+------+---------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> update stu_score set chinese=100 where name='liuming';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from stu_score;
++----------+------+---------+------+---------+-----------+---------+
+| name     | sn   | chinese | math | english | structure | databox |
++----------+------+---------+------+---------+-----------+---------+
+| xiaoming | 1740 |      90 |   98 |      97 |        96 |      95 |
+| xiaohua  | 1741 |      94 |   58 |      87 |        96 |      95 |
+| liuming  | NULL |     100 |   89 |      88 |      NULL |    NULL |
+| chenshu  | NULL |    NULL | NULL |      67 |      NULL |      88 |
++----------+------+---------+------+---------+-----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> delete from stu_score where name='chenshu';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from stu_score;
++----------+------+---------+------+---------+-----------+---------+
+| name     | sn   | chinese | math | english | structure | databox |
++----------+------+---------+------+---------+-----------+---------+
+| xiaoming | 1740 |      90 |   98 |      97 |        96 |      95 |
+| xiaohua  | 1741 |      94 |   58 |      87 |        96 |      95 |
+| liuming  | NULL |     100 |   89 |      88 |      NULL |    NULL |
++----------+------+---------+------+---------+-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql>
