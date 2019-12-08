@@ -59,6 +59,7 @@ class MyList{
                 cur=cur.next;
             }
         }
+        tmp.next=null;
         return node.next;
     }
 }
