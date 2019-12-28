@@ -1,0 +1,85 @@
+create database course_system;
+
+show databases;
+
+use course_system;
+
+show tables;
+
+create table student
+(
+  sn int primary key,
+  name varchar(20) not null,
+  classid int
+);
+
+insert into student values(19990226,"kiki",103);
+select * from student;
+
+
+create table class
+(
+  classid int primary key,
+  classname varchar(20)
+);
+
+insert into class values(2001,103);
+select * from class;
+
+create table course
+(
+  coursename varchar(20) not null,
+  courseid int primary key,
+  credit  int
+);
+
+insert into course values("线代",4,2);
+select * from course;
+
+show tables;
+
+create table teacher
+(
+  name varchar(20) not null,
+  teacherid int
+);
+
+insert into teacher values("xiaoxiao",01);
+insert into teacher values("jasd",02);
+insert into teacher values("jaja",03);
+select * from teacher;
+
+create table take
+(
+  sn int,
+  cid int,
+  score int,
+
+  primary key(sn,cid)
+);
+
+insert into take values(19990226,4,null);
+insert into take values(19990224,4,null);
+insert into take values(19990225,3,null);
+select * from take;
+
+create table teach
+(
+  cid int,
+  tid int,
+
+  primary key(cid,tid)
+);
+
+insert into teach values(2,01);
+insert into teach values(1,01);
+insert into teach values(3,02);
+insert into teach values(4,03);
+select * from teach;
+
+show tables;
+
+
+select * from class,student where class.classname <=> student.classid;
+select * from class;
+select * from student;
