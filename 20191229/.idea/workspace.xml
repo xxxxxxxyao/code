@@ -34,8 +34,8 @@
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7141a066-886b-418b-8695-c0a6bbcf2dca/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="295" column="51" lean-forward="true" selection-end-line="298" selection-end-column="100" />
+            <state relative-caret-position="59">
+              <caret line="294" column="50" lean-forward="true" selection-start-line="294" selection-start-column="50" selection-end-line="294" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -152,16 +152,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577591404340</updated>
-      <workItem from="1577591426928" duration="15831000" />
+      <workItem from="1577591426928" duration="16029000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15831000" />
+    <option name="totallyTimeSpent" value="16029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -202,8 +201,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7141a066-886b-418b-8695-c0a6bbcf2dca/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="295" column="51" lean-forward="true" selection-end-line="298" selection-end-column="100" />
+        <state relative-caret-position="59">
+          <caret line="294" column="50" lean-forward="true" selection-start-line="294" selection-start-column="50" selection-end-line="294" selection-end-column="50" />
         </state>
       </provider>
     </entry>
