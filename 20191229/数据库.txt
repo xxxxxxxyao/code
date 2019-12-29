@@ -1,0 +1,299 @@
+show databases;
+
+create database check_system;
+
+use check_system;
+
+select database();
+
+create table staff
+(
+  id int primary key,
+  name varchar(20) not null ,
+  age int,
+  sex varchar(5),
+  position varchar(5)
+);
+
+create table record
+(
+  sid int primary key ,
+  name varchar(20) unique ,
+  cardtime datetime,
+  adsence int
+);
+
+
+create database schoolhostel_system;
+use schoolhostel_system;
+
+create table student
+(
+  sid int primary key ,
+  name varchar(20) unique ,
+  class int not null,
+  tele int,
+  hid int
+);
+
+create table hostel
+(
+  hid int primary key ,
+  build int,
+  floor int,
+  rid int,
+  peoplenum int
+);
+
+create table record
+(
+  rid int primary key ,
+  time datetime,
+  performance int
+);
+
+desc  record;
+
+
+create database car_system;
+use car_system;
+
+create table user
+(
+  uid int primary key ,
+  name varchar(20) unique ,
+  age int,
+  tele bigint,
+  address varchar(30)
+);
+
+create table car
+(
+  cid int primary key ,
+  name varchar(20),
+  product datetime
+);
+
+create table massage
+(
+  mid int primary key ,
+  uid int,
+  cid int,
+  type varchar(20),
+  foreign key (uid) references user(uid),
+  foreign key (cid) references car(cid)
+);
+
+
+
+create database resterant_system;
+use resterant_system;
+
+create table resterant
+(
+  rid int primary key ,
+  position varchar(20)
+);
+
+create table windows
+(
+  wid int primary key ,
+  winfloor int,
+  name varchar(20)
+);
+
+create table account
+(
+  aid int primary key ,
+  wid int,
+  monry int,
+  time datetime,
+  item varchar(20),
+  foreign key (wid) references windows(wid)
+);
+
+show databases;
+
+use class_13_db_3;
+
+drop table trade;
+create table trade
+(
+  name varchar(20) primary key ,
+  price double(5,2),
+  count int,
+  information varchar(20)
+);
+insert into trade values("文具盒",18.5,109,null);
+insert into trade values("铅笔",2.5,100,null);
+insert into trade values("学生笔记本",18,200,null);
+insert into trade values("学生胶带",5,120,null);
+insert into trade values("订书机",20,20,null);
+insert into trade values("A4纸",2.5,10,null);
+
+insert into trade values("学生书包",18.91,101,null);
+
+update trade set price=price+50 where count>30;
+delete from trade where price>60 or count<200;
+
+
+
+select * from trade;
+
+create table teacher
+(
+  tid int primary key ,
+  name varchar(20) unique ,
+  age int,
+  high double(5,3),
+  height int,
+  sex varchar(5),
+  education varchar(5),
+  birth datetime
+);
+
+drop table book;
+create table book
+(
+  name varchar(29)primary key ,
+  author varchar(20) unique ,
+  price double(6,4),
+  classes varchar(20),
+  publish datetime
+);
+
+insert into book values("java核心技术","Cay S.Horstman",56.43,"计算机技术",'2019-01-20');
+insert into book values("深入理解虚拟机","周志明",78.45,"计算机技术",'2017-09-07');
+insert into book values("huhu",null,30,"计算机技术",'2017-09-07');
+insert into book values("深di",null,60,"计算机技术",'2019-09-07');
+
+
+select * from book where author is not null or price>50 and publish>'2019';
+
+
+
+
+show tables;
+drop table student;
+
+create table student
+(
+  name varchar(20) primary key ,
+  age int
+);
+
+insert into student values("xiaoxiao",12);
+insert into student values("张三",20);
+insert into student values("里斯",18);
+insert into student values("王五",30);
+
+select * from student where name like "张%" and age between 18 and 25;
+
+drop table article;
+create table article
+(
+  title varchar(20),
+  time datetime,
+  author varchar(20)
+);
+
+insert into article values(null,'2019-9-24 20:03:24',"里斯");
+insert into article values("小故事",'2014-11-24 10:23:20',"张三");
+insert into article values("小说",'2016-10-23 13:23:24',"王五");
+insert into article values("host",'2019-12-24 20:03:24',"hihi");
+
+select * from article where time between '2019-1-1 10:30:00' and '2019-11-10 16:02:00';
+
+select * from article where title is null or time>'2019-1-1';
+
+
+select * from article;
+
+
+create table user
+(
+  id int,
+  account int
+);
+
+insert into user values(100,200);
+insert into user values(200,2000);
+insert into user values(1,20);
+insert into user values(100,null);
+insert into user values(230,null);
+
+select * from user where account is not null and id between 1 and 200 or id between 300 and 500;
+select * from user where amount>1000;
+
+
+
+create table A
+(
+  name varchar(32),
+  grade int
+);
+
+insert into A values("zhangshan",80);
+insert into A values("lisi",60);
+insert into A values("wangwu",84);
+
+
+create table B
+(
+  name varchar(32),
+  age  int
+);
+
+insert into B values("zhangshan",26);
+insert into B values("lisi",24);
+insert into B values("wangwu",26);
+insert into B values("wutian",26);
+
+
+select B.name,A.grade,B.age from B left join A  on B.name=A.name;
+
+
+
+
+
+create table staff_
+(
+  staff_id int primary key ,
+  name varchar(20),
+  age int,
+  depart_id varchar(20)
+);
+
+insert into staff_ values(1,"sisi",20,900);
+insert into staff_ values(2,"hehe",23,901);
+insert into staff_ values(3,"xixi",21,902);
+insert into staff_ values(4,"nini",35,903);
+
+select * from staff_;
+
+create table depart
+(
+  depart_id int primary key ,
+  name varchar(20)
+);
+
+insert into depart values(900,"财务");
+insert into depart values(901,"行政");
+insert into depart values(902,"宣传");
+insert into depart values(903,"外化");
+
+
+create table salary
+(
+  salary_id int primary key ,
+  staff_id int,
+  salary int,
+  month datetime
+);
+
+insert into salary values(100,1,200,'2016-09-08');
+insert into salary values(101,2,206,'2017-11-08');
+insert into salary values(103,3,2000,'2002-07-08');
+insert into salary values(104,4,300,'2019-08-08');
+
+select salary from staff_ inner join salary on staff_.staff_id=salary.salary_id and month='2016-09';
