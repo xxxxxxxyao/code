@@ -2,26 +2,43 @@ package com.bit.edumysql;
 
 import sun.rmi.transport.Connection;
 
+import java.io.IOException;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class helloword {
+public class Helloword {
+
     public static void main(String[] args) {
+        java.sql.Connection connection = null;
+        Statement stmt = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");   //加载数据库驱动
+            Class.forName("com.mysql.jdbc.Driver");   //注册驱动，加载数据库驱动，driver用来打开mysql
 
-            java.sql.Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/","root","");
+            //获取连接
+          connection = DriverManager.getConnection("jdbc:mysql://localhost/", "root", "");  //协议
 
-            Statement stmt=connection.createStatement();
+           stmt = connection.createStatement();
 
             stmt.execute("create database my_jdbc_db");
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            //资源关闭
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
