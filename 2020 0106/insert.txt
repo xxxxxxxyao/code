@@ -1,0 +1,54 @@
+  public static void insertStudent(Student stu)
+    {
+        // 1. 获取数据源
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            connection = getDataSource().
+                    getConnection();
+
+            String sql =
+                    "insert into student values(?,?,?)";
+            pstmt = connection.prepareStatement(sql);
+
+            System.out.println(pstmt);
+            System.out.println(stu);
+
+            pstmt.setInt(1, stu.getSn());
+            pstmt.setString(2, stu.getName());
+            pstmt.setInt(3,stu.getClassid());
+            pstmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if (pstmt != null){
+                    pstmt.close();
+                }
+                if (connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    // 2. 查询学生表
+
+    // 3. 插入班级表
+    // 4. 查询班级表
+
+    // 插入课程表
+    // 查询课程表
+
+    // 插入教师表
+    // 查询教师表
+
+    // 插入 take
+    // 查询 take
+
+    // 插入 teach
+    // 查询 teach
+}

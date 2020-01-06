@@ -1,0 +1,45 @@
+public static Take selectScoreGroupBy(int score)
+    {
+        // 1. 获取数据源
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Take take = new Take();
+        try {
+            connection = getDataSource().
+                    getConnection();
+
+            String sql =
+                    "select score, count(score) as count_score" +
+                            " from student " +
+                            "group by score" +
+                    "having score > ?";
+            pstmt = connection.prepareStatement(sql);
+
+            System.out.println(pstmt);
+            pstmt.setInt(1, score);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()){
+                take.setScore(rs.getInt("score"));
+                take.setCount(rs.getInt("count_score"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if (pstmt != null){
+                    pstmt.close();
+                }
+                if (connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        return take;
+    }
