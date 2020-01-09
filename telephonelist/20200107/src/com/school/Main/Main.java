@@ -9,12 +9,13 @@ public class Main {
     public static void main(String[] args) {
         //1.插入用户
        /* User user=new User();
-        user.setTelenumber("1018982873");
-        user.setName("墩墩");
-        user.setAddress("北京");
-        user.setCode(710000);
-        user.setEmail("187283722@qq.com");
+        user.setTelenumber("18918982873");
+        user.setName("天天");
+        user.setAddress("海口");
+        user.setCode(710099);
+        user.setEmail("3241342341@qq.com");
         DBoperater.insertintotable(user);*/
+
 
         /*
         User user2=new User();
@@ -34,28 +35,26 @@ public class Main {
         DBoperater.insertintotable(user3);*/
 
 
-        //2.查询所有用户
+        //2.查询所有用户a
        /* List userlist=DBoperater.selectalluser();
         System.out.println(userlist);*/
 
-       //3.按要求查询用户
-         /* User user=DBoperater.selectuser("豆豆");
-          System.out.println(user);*/
 
+       //3.按要求查询用户
+        /*  User user=DBoperater.selectuser("豆豆");
+          System.out.println(user);
+*/
 
         //4.排序
-       /* List user1=DBoperater.oroupbyname();
-        System.out.println(user1);
-
-        List user2=DBoperater.oroupbyemail();
-        System.out.println(user2);*/
+       /* List user1=DBoperater.oroupbyemail();
+        System.out.println(user1);*/
 
        //5.更新表
-        User user=new User();
-        user.setTelenumber("12783746728");
+       /* User user=new User();
+        user.setTelenumber("12783746720");
         user.setAddress("巴黎");
-        user.setCode(710027);
-        user.setEmail("6276376273@qq.com");
-        DBoperater.update(user,"墩墩");
+        user.setCode(745342);
+        user.setEmail("12435625162@qq.com");
+        DBoperater.update(user,"墩墩");*/
     }
 }

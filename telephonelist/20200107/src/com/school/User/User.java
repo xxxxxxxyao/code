@@ -51,9 +51,9 @@ public class User {
     @Override
     public String toString() {
         if(email==null){
-          return   "name:"+name+"   "+"telenumber:"+telenumber+"   "+"address:"+address+"   "+"code:"+code+"   ";
+          return   "name:"+name+"   "+"telenumber:"+telenumber+"   "+"address:"+address+"   "+"code:"+code+"   "+"\n";
         }
         return "name:"+name+"   "+"telenumber:"+telenumber+"   "+"address:"+address+"   "+"code:"+code+"   "
-                +"email:"+email;
+                +"email:"+email+"\n";
     }
 }
