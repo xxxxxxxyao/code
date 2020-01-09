@@ -21,7 +21,7 @@ public class Helloword {
 
            stmt = connection.createStatement();
 
-            stmt.execute("create database my_jdbc_db");
+            stmt.execute("create database myjava");
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
