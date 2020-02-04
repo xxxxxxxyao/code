@@ -11,7 +11,7 @@ import com.sun.org.apache.xpath.internal.operations.Or;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.List;
 
 public class DBoperater {
@@ -277,7 +277,7 @@ public class DBoperater {
     public static void order(Orderlist o){
         Connection connection=null;
         PreparedStatement pstmt=null;
-        Date date=new Date();
+
         try {
             connection=getDataSource().getConnection();
 
@@ -286,7 +286,7 @@ public class DBoperater {
 
             pstmt.setInt(1,o.getOid());
             pstmt.setInt(2,o.getItem());
-            pstmt.setDate(3,o.getDate());
+            pstmt.setTimestamp(3,o.getDate());
             pstmt.setInt(4,o.getCount());
             pstmt.setInt(5,o.getCustmerid());
             pstmt.setInt(6,o.getOpid());
@@ -331,7 +331,7 @@ public class DBoperater {
                 Orderlist o=new Orderlist();
                 o.setOid(rs.getInt("oid"));
                 o.setItem(rs.getInt("item"));
-                o.setDate(rs.getDate("date"));
+                o.setDate(rs.getTimestamp("date"));
                 o.setCount(rs.getInt("count"));
                 o.setCustmerid(rs.getInt("custmerid"));
                 o.setOpid(rs.getInt("opid"));
@@ -414,7 +414,7 @@ public class DBoperater {
                     "  inner join production where production.pid=orderlist.opid and custmerid=? group by opid;";
             pstmt=connection.prepareStatement(sql);
             pstmt.setInt(1,custmerid1);
-            rs=pstmt.executeQuery();  //下达select指令以查询数据
+            rs=pstmt.executeQuery();
 
             while(rs.next()){
                 Count c=new Count();
