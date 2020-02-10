@@ -1,0 +1,160 @@
+输入输出以及文件操作
+
+1.理解流的概念
+2.掌握文件的创建和相关文件流的使用
+3.掌握字节流和字符流的创建和使用
+4.熟悉对象流的概念和作用
+5.了解过滤流，管道流的概念
+6.了解不同流的不同速度
+7.了解JavaI/O流的其他应用
+
+
+
+
+一.流的概念
+
+   大部分程序都需要数据输入输出处理，如从键盘读取数据，向屏幕输出数据等
+Java把这些不同类型的输入，输出源抽象为流 
+
+流是在输入输出之间流动的数据序列
+
+流一般分为输入流和输出流两类
+1.从程序到数据接收器的数据流是输出流，用来向接受器写数据
+2.程序同数据源相连的是输入流，从数据源读数据叫输入流
+
+从类的层次看I/O流
+   在JAVA中，主要是由包java.io中提供的一系列的类和统一的接口来实现数据的输入输出处理
+   标准输入输出（键盘输入，显示器输出）处理则是由包java.lang中提供的类来处理的，
+但这些类都是从包java.io中的类继承而来的
+
+
+标准io流
+  键盘用stdin表示输入，监视器用stdout表示。他们均被封装在System类的类变量in和out中
+1.system.in       从inputStream中继承而来，用于从标准输入设备中获取输入数据（通常是键盘）
+2.system.out    从printStream中继承而来，把输出送到缺省的显示设备（通常是显示器）
+3.system.err     从printStream中继承而来，把错误的信息送到缺省的显示设备（显示器）
+
+
+   在java.io包中有字节流（以byte为基本处理单位的流，以inputstream和outputstream为父类派生的一系列类）
+和字符流（以字符为基本处理单位的流，以reader和writer为父类派生的一系列类）
+
+
+
+
+二.文件的概述
+
+   file是java.io包中一个重要的非流类
+   file类提供了一种与机器无关的方式来描述一个文件对象的属性，目录也作为文件对象处理，file类中还封装了对文件系统进行操作的功能
+
+1.创建文件对象
+   file的构造方法有3个
+       file（String filename）；
+       file（String directoryPath（路径），String filename）；
+       file（file f（目录），String filename）；
+
+
+2.文件的创建与删除
+
+ ①创建
+    File f=new File("c:\\myletter","letter.txt");
+   如果c:\\myletter目录中没有名为letter.txt文件，文件对象f可以调用方法：public boolean creatNewFile()
+可以在c:\\myletter目录中建立一个名为letter.txt的文件，当文件存在时，不会重复创建，文件不存在时，创建成功
+
+ ②删除
+  public boolean delete();
+f.delete();删除操作
+
+
+3.常用的对文件属性操作方法
+
+public String getName();   获取文件名字
+public boolean canRead();  判断文件是否是可读的
+public boolean canWrite(); 判断文件是否可以被写入
+public boolean exits();       判断文件是否存在
+pubic long length();          获取文件长度（单位字节）
+public String getAbsolutePath();   获取文件的绝对路径
+public String getParent();    获取文件的父目录
+public boolean isFile();    判断文件是否是一个正常文件，而不是目录
+public boolean isDirectroy(); 判断文件是否是一个目录
+public boolean isHidden();    判断文件是否是隐藏文件
+public long lastModified();    获取文件最后修改时间，1970年午夜至文件最后修改时刻的毫秒数
+
+例子：通过文件类的相关方法打印文件的相关信息
+
+import java.io.*;
+import java.util.*;
+
+class FileFun{
+   public static void main(String[] args){
+      File f=new File("1.txt");
+       try{
+          f.createNewFile();
+      }catch(Exception e){
+        System.out.println("磁盘错误");
+      }
+    System.out.println("文件名是："+f.getName());
+  }
+} 
+
+
+
+4.目录
+
+①创建目录
+   public boolean mkdir()      创建一个目录
+创建目录之前先要创建出文件对象，然后在创建目录
+
+②列出目录中的文件
+
+   public String[] list()    用字符串的形式返回目录下的全部文件
+   public File[]     listFiles()   用File对象形式返回目录下的全部文件
+   public String[] list(FilenameFilter obj)     用字符串形式返回目录下的指定类型的所有文件
+   public File[]     listFiles(FilenameFilter obj)  用File对象返回目录下的指定类型所有文件
+
+
+
+5.随机文件流
+
+  随机文件流RandomAccessFile类可以同时完成读和写文件中任意位置的数据的操作
+声明格式：public class RandomAccessFile extends Object implements DataInput,DataOutput
+  RandomAccessFile类仅限于操作文件，不能访问其他IO设备，如网络，内存映像等
+  RandomAccessFile类中有一个文件指针，刚打开文件时，文件指针指向文件的开始位置，使用RandomAccessFile类对象读取文件时，是从
+指针指示的当前位置开始读取，当读取n个字节后，指针指向n个字节后的位置。不管是读还是写都是以文件指针所在的位置为准
+
+①创建随机文件流
+    RandomAccessFile(String name,String mode(创建流的模式（读或者写）))
+    RandomAccessFile(File file,String mode)
+
+如：File file=new File("file.txt");
+       new RandomAccessFile(f,"r");
+       new RandomAccessFile(f,"rw");
+
+
+
+②RandomAccessFile类常用的方法
+
+ byte readByte()    从文件中读取一个字节
+ double readDouble() 从文件中读取一个浮点值
+ int readInt()       从文件中读取一个int值
+ String readLine()   从文件中读取一个文本行
+void write(byte b[])   写b.length个字节到文件
+void writeDouble(double v)   向文件写入一个双精度浮点型
+void seek(long pos)   将文件指针调到所需位置
+void close()     关闭随机流对象
+long getFilePointer()  返回指针当前位置
+void setLength(long newLength)    设定文件长度
+
+注意：以上方法都会抛出IOException异常
+
+
+
+
+6.压缩文件流
+
+  java实现了IO数据流与网络数据流单一接口，因此数据的压缩，网络传输，
+和解压缩的实现比较容易
+
+ java利用ZipEntry，ZipInputStream和ZipOutputStream三个类来实现zip数据压缩
+zip压缩文件结构：一个zip文件由多个entry组成，每个entry都有名称，entry的数据项存储压缩数据
+    
+     
