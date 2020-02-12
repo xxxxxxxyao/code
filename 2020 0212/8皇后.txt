@@ -1,0 +1,78 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+typedef int boolean;
+#define true 1
+#define false 0
+int num = 0;      //解的数目
+char m[8][8] = { '*' };   //表示一个棋盘，初始化为*
+
+boolean Check(int row, int col)
+{
+	int i, j;
+	if (row == 1)return true;
+	for (i = 0; i <= row - 2; i++)     //纵向只能有一个皇后
+	{
+		if (m[i][col - 1] == 'Q') return false;
+
+	}
+	//左上至右下只能有一个皇后
+	i = row - 2;
+	j = i - (row - col);
+	while (i >= 0 && j >= 0)
+	{
+		if (m[i][j] == 'Q') return false;
+		i--;
+		j--;
+	}
+	//右上至左下只能有一个皇后
+	i = row - 2;
+	j = row + col - i - 2;
+	while (i >= 0 && j <= 7)
+	{
+		if (m[i][j] == 'Q') return false;
+		i--;
+		j++;
+	}
+	return true;
+}
+
+//当已放置8个皇后，为可行解时，输出棋盘
+void Output()  
+{
+	int i, j;
+	num++;
+	printf("可行解 %d:\n", num);
+	for (i = 0; i < 8; i++)
+	{
+		for (j = 0; j < 8; j++)
+		{
+			printf("%c ", m[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+//该函数求解当棋盘前row-1行已放置好皇后，在第row行放置皇后
+void EightQueen(int row)
+{
+	int j;
+	for (j = 0; j < 8; j++)
+	{
+		m[row - 1][j] = 'Q';    //在其中一列放置皇后
+		if (Check(row, j + 1) == true)
+		{
+			if (row == 8)Output();
+			else EightQueen(row + 1);
+		}
+		//取出该列皇后，进行回溯，在其他列放置皇后
+		m[row - 1][j] = '*';
+	}
+}
+
+void main()
+{
+	EightQueen(1);
+	system("pause");
+}
+

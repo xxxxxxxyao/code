@@ -8,12 +8,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //1.插入用户
-       /* User user=new User();
+        /*User user=new User();
         user.setTelenumber("18918982873");
-        user.setName("天天");
-        user.setAddress("海口");
-        user.setCode(710099);
-        user.setEmail("3241342341@qq.com");
+        user.setName("蜜蜜");
+        user.setAddress("海南");
+        user.setCode(710012);
+        user.setEmail("3241111341@qq.com");
         DBoperater.insertintotable(user);*/
 
 
@@ -36,8 +36,8 @@ public class Main {
 
 
         //2.查询所有用户a
-       /* List userlist=DBoperater.selectalluser();
-        System.out.println(userlist);*/
+        List userlist=DBoperater.selectalluser();
+        System.out.println(userlist);
 
 
        //3.按要求查询用户
