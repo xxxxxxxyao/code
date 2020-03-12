@@ -1,0 +1,23 @@
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> list=new LinkedList<>();
+        if(root==null){
+            return list;
+        }
+        Stack<TreeNode> q=new Stack<>();
+        q.push(root);
+        while(!q.empty()){
+            TreeNode cur=q.peek();
+            list.add(cur.val);
+            q.pop();
+            if(cur.right!=null){
+                q.push(cur.right);
+            }
+            if(cur.left!=null){
+                q.push(cur.left);
+            }
+             
+        }
+        return list;
+    }
+}
