@@ -1,0 +1,38 @@
+
+//二叉树的后序非递归遍历
+
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        TreeNode pre=null;
+        List<Integer> list=new LinkedList<>();
+     if(root==null){
+           return list;
+       }
+
+       TreeNode cur=root;
+       Stack<TreeNode> s=new Stack<>();
+
+       while(cur!=null || !s.empty()){
+           //保存根的左子树
+           while(cur!=null){
+               s.push(cur);
+               cur=cur.left;
+           }
+
+           //获取cur的子树
+           TreeNode top=s.peek();
+
+           //遍历top的右子树
+           //top的右子树为空，直接遍历
+           if(top.right==null || top.right==pre){
+               list.add(top.val);
+               pre=s.pop();
+           }
+           //top的右子树不为空
+           else{
+               cur=top.right;
+           }
+        }
+       return list;
+    }
+}
