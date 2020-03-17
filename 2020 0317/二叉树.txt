@@ -1,0 +1,123 @@
+//1.获取二叉树的两个节点的最近公共祖先
+
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null || p==null || q==null){
+            return null;
+        }
+        Stack<TreeNode> pPath=new Stack<>();
+        Stack<TreeNode> qPath=new Stack<>();
+        getNodePath(root,p,pPath);
+        getNodePath(root,q,qPath);
+
+        int size1=pPath.size();
+        int size2=qPath.size();
+        while(size1 != 0 && size2!=0){
+            if(size1>size2){
+                pPath.pop();
+                size1--;
+            }else if(size1<size2){
+                qPath.pop();
+                size2--;
+            }else{
+                if(pPath.peek()==qPath.peek()){
+                    return pPath.peek();
+                }
+                else{
+                    pPath.pop();
+                    qPath.pop();
+                    size1--;
+                    size2--;
+                }
+            }
+        }
+        return null;
+    }
+
+
+//获取节点的路径并保存在栈中
+    private boolean getNodePath(TreeNode root,TreeNode node,Stack<TreeNode> s){
+        if(root==null){
+            return false;
+        }
+
+        s.push(root);
+        if(root==node){
+            return true;
+        }
+
+        if(getNodePath(root.left,node,s) || getNodePath(root.right,node,s)){
+            return true;
+        }
+
+        s.pop();
+        return false;
+    }
+}
+
+
+
+//2.第二种方法
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null || p==null || q==null){
+            return null;
+        }
+
+        if(p==root || q==root){
+            return root;
+        }
+
+       boolean ispinleft=false;
+       boolean ispinright=false;
+       boolean isqinleft=false;
+       boolean isqinright=false;
+       if(isNodeintree(root.left,p)){
+           ispinleft=true;
+           ispinright=false;
+       }else{
+           ispinleft=false;
+           ispinright=true;
+       }
+
+
+       if(isNodeintree(root.left,q)){
+           isqinleft=true;
+           isqinright=false;
+       }else{
+           isqinleft=false;
+           isqinright=true;
+       }
+
+       if(ispinleft && isqinright || ispinright && isqinleft){
+           return root;
+       }
+
+       else if(ispinleft && isqinleft){
+           return lowestCommonAncestor(root.left,p,q);
+       }
+       else{
+           return lowestCommonAncestor(root.right,p,q);
+       }
+    }
+
+
+
+//检测一个节点是否在二叉树中
+    private boolean isNodeintree(TreeNode root,TreeNode node){
+        if(root==null){
+            return false;
+        }
+
+        if(root==node){
+            return true;
+        }
+
+        if(isNodeintree(root.left,node) || isNodeintree(root.right,node)){
+            return true;
+        }
+
+        return false;
+    }
+}
