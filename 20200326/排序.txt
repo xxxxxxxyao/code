@@ -1,0 +1,70 @@
+//1.插入排序
+
+class Solution {
+    public int[] sortArray(int[] nums) {
+        for(int i=1;i<nums.length;i++){
+            int key=nums[i];
+            int end=i-1;
+
+            while(end>=0 && key<nums[end]){
+                nums[end+1]=nums[end];
+                end--;
+            }
+
+            nums[end+1]=key;
+        }
+        return nums;
+    }
+}
+
+//2.希尔排序
+class Solution {
+    public int[] sortArray(int[] nums) {
+         int gap=nums.length;
+      while(gap>0){
+        gap=gap/3+1;
+        for(int i=gap;i<nums.length;i++){
+            int key=nums[i];
+            int end=i-gap;
+
+            while(end>=0 && key<nums[end]){
+                nums[end+gap]=nums[end];
+                end=end-gap;
+            }
+            nums[end+gap]=key;
+         }
+       gap--;
+      }
+     return nums;
+    }
+}
+
+
+
+//3.选择排序
+class solution{
+   public static void selectsort(int[] array){
+      for(int i=0;i<array.length-1;i++){
+
+          int max=0;
+          for(int j=1;j<array.length-i;j++){
+             if(array[j] > array[max]){
+                max=j;
+             }    
+          }
+
+          if(array.length-1==max){
+              swap(array,max,array.length-1-i);
+          }
+      }
+   }
+
+    public static void swap(int[] arr,int left,int right){
+          int tmp=arr[left];
+          arr[left]=arr[right];
+          arrr[right]=tmp;
+  }
+}
+
+
+
