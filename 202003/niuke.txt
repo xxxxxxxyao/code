@@ -1,0 +1,88 @@
+//1.最小的k个数
+
+import java.util.*;
+public class Solution {
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> l=new ArrayList<>();
+        
+        if(k>input.length){
+            return l;
+        }
+        
+        for(int i=1;i<input.length;i++){
+            int a=input[i];
+            int end=i-1;
+            
+            while(end>=0 && a<input[end]){
+                input[end+1]=input[end];
+                end--;
+            }
+            
+            input[end+1]=a;
+        }
+        
+        for(int i=0;i<k;i++){
+            l.add(input[i]);
+        }
+        return l;
+    }
+}
+
+
+
+
+
+
+
+
+
+//2.扑克牌顺子
+
+import java.util.*;
+public class Solution {
+    public boolean isContinuous(int [] numbers) {
+        if(numbers.length==0){
+            return false;
+        }
+        int count=0;
+        for(int i=0;i<numbers.length;i++){
+            if(numbers[i]==0){
+                count++;
+            }
+        }
+        
+        Arrays.sort(numbers);
+        int j=count;
+        int num=0;
+        while(j<numbers.length-1){
+            if(numbers[j]==numbers[j+1]){
+                return false;
+            }
+            num=num+(numbers[j+1]-numbers[j]-1);
+            j++;
+        }
+        
+        if(count>=num){
+            return true;
+        }
+        return false;
+    }
+}
+
+
+//3.连续子数组的最大和
+import java.util.*;
+
+public class Solution {
+    public int FindGreatestSumOfSubArray(int[] array) {
+        int sum=array[0];
+        int tmpsum=array[0];
+        
+        for(int i=1;i<array.length;i++){
+            tmpsum=Math.max(array[i]+tmpsum,array[i]);
+            sum=Math.max(tmpsum,sum);
+        }
+        
+        return sum;
+    }
+}
