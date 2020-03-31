@@ -1,0 +1,35 @@
+
+//1.
+import java.util.*;
+public class Main{
+    
+    public static void reverse(String ss){
+        Stack<Character> s=new Stack<>();
+        int i=ss.length();
+        for(int j=0;j<i;j++){
+            s.push(ss.charAt(j));
+        }
+        
+        while(!s.empty()){
+            System.out.print(s.pop());
+        }
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        reverse(s);
+    }
+}
+
+//2.汽水瓶
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int a=sc.nextInt();
+            System.out.println(a/2);
+        }
+    }
+}
