@@ -1,0 +1,172 @@
+
+//1.回文串判断
+import java.util.*;
+
+public class Main{
+    
+    public static boolean ishuiwen(String ss){
+        int l=0;
+        int r=ss.length()-1;
+        while(l<r){
+            if(ss.charAt(l) != ss.charAt(r)){
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String a=sc.nextLine();
+        String b=sc.nextLine();
+        int count=0;
+        for(int i=0;i<=a.length();i++){
+            StringBuilder s=new StringBuilder(a);
+            s.insert(i,b);
+            
+            if(ishuiwen(s.toString())){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+
+
+
+
+//2.字符串中的最长数字串
+
+import java.util.*;
+
+public class Main{
+    public static void fun(String s){
+        String[] arr=s.split(" ");
+        int max=0;
+        int maxl=arr[0].length();
+        for(int i=1;i<arr.length;i++){
+            if(arr[i].length()>arr[max].length()){
+                max=i;
+                maxl=arr[i].length();
+            }
+        }
+        String q=arr[max];
+        System.out.println(q);
+    }
+    
+    
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        char[] ss=s.toCharArray();
+        for(int i=0;i<ss.length;i++){
+            if( !(ss[i]>='0' && ss[i]<='9')){
+                ss[i]=' ';
+            }
+        }
+        String q=new String(ss);
+        fun(q);
+        
+    }
+}
+
+
+//3.计算字符个数
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int count=0;
+        
+            String s1=sc.nextLine().toUpperCase();
+            char[] cc=sc.nextLine().toUpperCase().toCharArray();
+        
+        char c=cc[0];
+        
+        for(int i=0;i<s1.length();i++){
+            if(s1.charAt(i)==c){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+
+//4.字符串分割
+public class Main{
+     
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNextLine()){
+             String s=sc.nextLine();
+            int len=s.length();
+            StringBuilder ss=new StringBuilder(s);
+            if(len%8 != 0){
+                for(int i=0;i<8-len%8;i++){
+                    ss.append("0");
+                }
+            }
+            
+            while(ss.length()>=8){
+                System.out.println(ss.substring(0,8));
+                ss=ss.delete(0,8);
+            }
+        }
+    }
+}
+
+
+
+
+//5.句子逆序
+import java.util.*;
+
+public class Main{
+     
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        String[] arr=s.split(" ");
+        int left=0;
+        int r=arr.length-1;
+        while(left<r){
+            String tmp=arr[left];
+            arr[left]=arr[r];
+            arr[r]=tmp;
+            left++;
+            r--;
+        }
+        
+        StringBuilder ss=new StringBuilder();
+        int j=0;
+        while(j!=arr.length-1){
+            ss.append(arr[j]);
+            ss.append(" ");
+            j++;
+        }
+        ss.append(arr[j]);
+        String s1=ss.toString();
+        System.out.println(s1);
+    }
+}
+
+
+//6.反转
+import java.util.*;
+
+public class Reverse {
+    public String reverseString(String iniString) {
+        // write code here
+        StringBuilder s=new StringBuilder();
+        int j=iniString.length()-1;
+        while(j>=0){
+            s.append(iniString.charAt(j));
+            j--;
+        }
+        return s.toString();
+    }
+}
