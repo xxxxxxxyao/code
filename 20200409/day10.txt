@@ -1,0 +1,52 @@
+
+//1.feibonacci数列
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num=sc.nextInt();
+        
+        int x=fun(num);
+        System.out.println(x);
+    }
+    
+    public static int fun(int num){
+        int s=0;
+        int c=0;
+        for(int i=0;;i++){
+            s=feibo(i);
+            c=feibo(i+1);
+            if(s<=num && c>=num){
+                break;
+            }
+        }
+        int a=num-s;
+        int b=c-num;
+        return a>b? b:a;
+    }
+    
+    public static int feibo(int i){
+        if(i==0){
+            return 0;
+        }
+        
+        if(i==1){
+            return 1;
+        }
+        return feibo(i-1)+feibo(i-2);
+    }
+}
+
+
+//2.机器人走方格1
+import java.util.*;
+
+public class Robot {
+    public int countWays(int x, int y) {
+        if(x==1 || y==1){
+            return 1;
+        }
+        
+        return countWays(x-1,y)+countWays(x,y-1);
+    }
+}
