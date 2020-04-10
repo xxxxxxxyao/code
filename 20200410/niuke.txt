@@ -1,0 +1,53 @@
+//1.统计个数
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        
+        fun(s);
+    }
+    
+    public static void fun(String num){
+        
+        int[] arr=new int[10];
+        
+        for(int i=0;i<num.length();i++){
+            arr[num.charAt(i)-'0'] += 1;
+        }
+        
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=0){
+                System.out.println(i+":"+arr[i]);
+            }
+            
+        }
+    }
+}
+
+
+
+
+//2.构建乘积数组
+public class Solution {
+    public int[] multiply(int[] A) {
+        int length = A.length;
+        int[] B = new int[length];
+        if(length != 0 ){
+            B[0] = 1;
+            //计算下三角连乘
+            for(int i = 1; i < length; i++){
+                B[i] = B[i-1] * A[i-1];
+            }
+            int temp = 1;
+            //计算上三角
+            for(int j = length-2; j >= 0; j--){
+                temp *= A[j+1];
+                B[j] *= temp;
+            }
+        }
+        return B;
+    }
+}
