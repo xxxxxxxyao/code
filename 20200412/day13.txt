@@ -1,0 +1,89 @@
+
+
+//1.跟奥巴马学编程
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        String s=sc.next();
+        char c=s.charAt(0);
+        int col=a;
+        int row=0;
+        if(col%2 == 0){
+             row=col/2;
+        }else{
+             row=col/2+1;
+        }
+        
+        
+        for(int i=0;i<row;i++){
+            if(i==0 || i==row-1){
+                for(int j=0;j<col;j++){
+                    System.out.print(c);
+                }
+                System.out.println();
+            }else{
+                for(int j=0;j<col;j++){
+                    if(j==0 || j==col-1){
+                        System.out.print(c);
+                    }else{
+                        System.out.print(" ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+    }
+}
+
+
+
+//2.超长整数相加
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        
+        Scanner sc=new Scanner(System.in);
+        
+        while(sc.hasNext()){
+        String s1=sc.nextLine();
+        String s2=sc.nextLine();
+        
+        int len1=s1.length();
+        int len2=s2.length();
+        int len=Math.max(len1,len2);
+        
+        
+        int[] arr1=new int[len];
+        int[] arr2=new int[len];
+        int[] arr3=new int[len+1];
+        
+        for(int i=0;i<len1;i++){
+            arr1[i]=s1.charAt(len1-1-i)-'0';
+        }
+        
+        for(int i=0;i<len2;i++){
+            arr2[i]=s2.charAt(len2-1-i)-'0';
+        }
+        
+        
+        for(int i=0;i<len;i++){
+            int sum=arr3[i]+arr1[i]+arr2[i];
+            int f=sum/10;
+            arr3[i]=sum%10;
+            arr3[i+1]+=f;
+        }
+        
+            
+        for(int i=arr3[len]==0?1:0;i<len+1;i++){
+            System.out.print(arr3[len-i]);
+        }
+        
+             System.out.println();
+    }
+    }
+}
