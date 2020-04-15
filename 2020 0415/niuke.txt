@@ -1,0 +1,82 @@
+//1.统计同成绩学生人数
+
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int a=sc.nextInt();
+            int[] arr=new int[a];
+            for(int i=0;i<arr.length;i++){
+                arr[i]=sc.nextInt();
+            }
+            int score=sc.nextInt();
+            
+            int count=0;
+            for(int i=0;i<arr.length;i++){
+                if(arr[i]==score){
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+//2.洗牌
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int count=sc.nextInt();
+        while(count-->0){
+            int n=sc.nextInt();
+            int k=sc.nextInt();
+            
+            int[] arr=new int[n*2];
+            for(int i=0;i<arr.length;i++){
+                arr[i]=sc.nextInt();
+            }
+            
+            
+            while(k-->0){
+                int[] arr2=new int[n*2];
+                int x=arr2.length-1;
+                int l=arr.length/2-1;
+                int r=arr.length-1;
+                while(l>=0){
+                        arr2[x--]=arr[r];
+                        r--;
+                        
+                        arr2[x--]=arr[l];
+                        l--;
+                }
+                 arr=arr2;
+            }
+            
+            for(int i=0;i<arr.length;i++){
+                if(i!=arr.length-1){
+                    System.out.print(arr[i]+" ");
+                }else{
+                    System.out.print(arr[i]);
+                }
+            }
+            
+            if(count-1 >= 0){
+                System.out.print(" ");
+            } 
+            System.out.println();
+        }
+       
+    }
+}
