@@ -1,0 +1,64 @@
+
+//1.DNA序列
+
+import java.util.*;
+
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+        String s=sc.nextLine();
+        int num=sc.nextInt();
+        
+        
+        String maxs=s.substring(0,num);
+        int c=0;
+        for(int j=0;j<maxs.length();j++){
+                if(maxs.charAt(j)=='G' || maxs.charAt(j)=='C' ){
+                    c++;
+                }
+            }
+        double max=c /(num*1.0); 
+        
+        for(int i=0;i<s.length();i++){
+            int l=i;
+            int r=i+num;
+            
+            if(r<=s.length()){
+            String ss=s.substring(l,r);
+            int count=0;
+            for(int j=0;j<ss.length();j++){
+                if(ss.charAt(j)=='G' || ss.charAt(j)=='C' ){
+                    count++;
+                }
+            }
+            
+            double rate=count /(num*1.0); 
+            if(rate>max){
+                max=rate;
+                maxs=ss;
+            }
+            }
+        }
+        
+        System.out.println(maxs);
+        }
+    }
+}
+
+
+//2.百万富翁问题
+public class Main{
+    public static void main(String[] args){
+        
+        int a=0;
+        int b=0;
+        for(int i=0;i<30;i++){
+            a=a+10; 
+           b=b+(int)Math.pow((double)2,(double)i);
+        }
+        
+        System.out.println(a+" "+b);
+    }
+}
