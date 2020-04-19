@@ -1,0 +1,64 @@
+//1.成绩排序
+
+import java.util.*;
+
+class Student{
+    public String name;
+    public  int score;
+    public Student(String name,int score){
+        this.name=name;
+        this.score=score;
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        
+        while(sc.hasNext()){
+            int count=sc.nextInt();
+            int sortway=sc.nextInt();
+            ArrayList<Student> l=new ArrayList<>();
+            for(int i=0;i<count;i++){
+                l.add(new Student(sc.next(),sc.nextInt()));
+            }
+            
+            if(sortway==0){
+                 Collections.sort(l, new Comparator<Student>(){
+                    public int compare(Student o1,Student o2){
+                        return o2.score-o1.score;
+                    }
+                });
+            }
+            if(sortway==1){
+                 Collections.sort(l, new Comparator<Student>(){
+                    public int compare(Student o1,Student o2){
+                        return o1.score-o2.score;
+                    }
+                });
+            }
+            
+             for(int i=0;i<l.size();i++){
+                System.out.println(l.get(i).name+" "+l.get(i).score);
+            }
+        }
+    }
+}
+
+
+//2.子串判断
+import java.util.*;
+
+public class Substr {
+    public boolean[] chkSubStr(String[] p, int n, String s) {
+        boolean[] arr=new boolean[n];
+        for(int i=0;i<n;i++){
+            if(s.contains(p[i])){
+                arr[i]=true;
+            }else{
+                 arr[i]=false;;
+            }
+        }
+        return arr;
+    }
+}
