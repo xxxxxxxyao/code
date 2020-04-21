@@ -1,0 +1,73 @@
+
+
+//1.分割链表
+import java.util.*;
+
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Partition {
+    public ListNode partition(ListNode pHead, int x) {
+        if(pHead==null){
+            return null;
+        }
+        ListNode node=new ListNode(-1);
+        ListNode tmp=node;
+        ListNode node1=new ListNode(-1);
+        ListNode tmp1=node1;
+        while(pHead!=null){
+            if(pHead.val<x){
+                tmp.next=new ListNode(pHead.val);
+                tmp=tmp.next;
+            }else{
+                tmp1.next=new ListNode(pHead.val);
+                tmp1=tmp1.next;
+            }
+            pHead=pHead.next;
+        }
+        if(node.next==null){
+            node.next=node1.next;
+        }else{
+            tmp.next=node1.next;
+        }
+        return node.next;
+    }
+}
+
+//2.微信红包
+import java.util.*;
+
+public class Gift {
+    public int getValue(int[] gifts, int n) {
+        Arrays.sort(gifts);
+        int num=gifts[(n/2)-1];
+        int num1=gifts[n/2];
+        int count=0;
+        int count1=0;
+        for(int i=0;i<n;i++){
+            if(gifts[i]==num){
+                count++;
+            }
+            if(gifts[i]==num1){
+                count1++;
+            }
+        }
+        int s=0;
+        if(count>count1){
+            if(count>=n/2){
+                s=num;
+            }
+        }else{
+            if(count1>=n/2){
+                s=num1;
+            }
+        }
+        return s;
+    }
+}
