@@ -1,0 +1,59 @@
+//1.统计每个月兔子的总数
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+        int num=sc.nextInt();
+        int d=count(num);
+        System.out.println(d);
+        }
+    }
+    
+    public static int count(int num){
+        if(num==1 || num==2){
+            return 1;
+        }
+        
+        return count(num-1)+count(num-2);
+    }
+}
+
+//2.最难的问题
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            StringBuilder ss=new StringBuilder();
+            for(int i=0;i<s.length();i++){
+                if(s.charAt(i)=='A'){
+                    ss.append('V');
+                }
+               else if(s.charAt(i)=='B'){
+                    ss.append('W');
+                }
+               else if(s.charAt(i)=='C'){
+                    ss.append('X');
+                }
+               else if(s.charAt(i)=='D'){
+                    ss.append('Y');
+                }
+               else if(s.charAt(i)=='E'){
+                    ss.append('Z');
+                }
+                else if(s.charAt(i)==' '){
+                    ss.append(" ");
+                }
+                else{
+                    char c=(char)((int)s.charAt(i)-5);
+                    ss.append(c);
+                }
+            }
+            System.out.println(ss.toString());
+        }
+    }
+}
