@@ -1,0 +1,123 @@
+//1.到底买不买
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s1=sc.nextLine();
+            String s2=sc.nextLine();
+            
+            StringBuilder s=new StringBuilder(s1);
+            int count=0;
+            for(int i=0;i<s2.length();i++){
+                for(int j=0;j<s.length();j++){
+                    if(s2.charAt(i)==s.charAt(j)){
+                        s.delete(j,j+1);
+                        count++;
+                        break;
+                    }
+                }
+            }
+            if(count==s2.length()){
+                int a=s1.length()-count;
+                System.out.println("Yes"+" "+a);
+            }else{
+                int b=s2.length()-count;
+                System.out.println("No"+" "+b);
+            }
+        }
+    }
+}
+
+
+//2.链式A+B
+import java.util.*;
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Plus {
+    public ListNode plusAB(ListNode a, ListNode b) {
+        ListNode cur1=a;
+        ListNode cur2=b;
+        boolean flag=false;
+        ListNode node=new ListNode(-1);
+        ListNode tmp=node;
+        int len1=0;
+        int len2=0;
+        while(cur1!=null){
+            len1++;
+            cur1=cur1.next;
+        }
+        while(cur2!=null){
+            len2++;
+            cur2=cur2.next;
+        }
+        cur1=a;
+        cur2=b;
+        if(len1>len2){
+            cur1=b;
+            cur2=a;
+        }
+        while(cur1!=null){
+            if(flag==false){
+                if((cur1.val+cur2.val)<10){
+                    flag=false;
+                   tmp.next=new ListNode(cur1.val+cur2.val);
+                   tmp=tmp.next;
+                   cur1=cur1.next;
+                   cur2=cur2.next;
+                }else{
+                   flag=true;
+                   tmp.next=new ListNode((cur1.val+cur2.val)%10);
+                   tmp=tmp.next;
+                   cur1=cur1.next;
+                   cur2=cur2.next;
+               }
+            }else{
+                if((cur1.val+cur2.val+1)<10){
+                    flag=false;
+                   tmp.next=new ListNode(cur1.val+cur2.val+1);
+                   tmp=tmp.next;
+                   cur1=cur1.next;
+                   cur2=cur2.next;
+                }else{
+                   flag=true;
+                   tmp.next=new ListNode((cur1.val+cur2.val+1)%10);
+                   tmp=tmp.next;
+                   cur1=cur1.next;
+                   cur2=cur2.next;
+               }
+            }
+            
+        }
+        while(cur2!=null){
+            if(flag==false){
+                tmp.next=cur2;
+                break;
+            }else{
+                if(cur2.val+1<10){
+                    flag=false;
+                    tmp.next=new ListNode(cur2.val+1);
+                    tmp=tmp.next;
+                    cur2=cur2.next;
+                }else{
+                    flag=true;
+                    tmp.next=new ListNode((cur1.val+cur2.val+1)%10);
+                   tmp=tmp.next;
+                   cur2=cur2.next;
+                }
+            }
+        }
+        if(flag==true){
+            tmp.next=new ListNode(1);
+        }
+        return node.next;
+    }
+}
