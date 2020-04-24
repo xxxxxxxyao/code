@@ -1,0 +1,108 @@
+
+//1.二叉树平衡
+import java.util.*;
+/*
+public class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+    public TreeNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Balance {
+    public int height(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int l=height(root.left);
+        int h=height(root.right);
+        return l>h?l+1:h+1;
+    }
+    public boolean isBalance(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        int l=height(root.left);
+        int h=height(root.right);
+        if(Math.abs(l-h)>1){
+            return false;
+        }
+        return isBalance(root.left) && isBalance(root.right);
+    }
+}
+
+
+
+//2.数字分类
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+          
+                int num=sc.nextInt();
+                int[] arr=new int[num];
+                for(int i=0;i<num;i++){
+                    arr[i]=sc.nextInt();
+                }
+                
+                int[] a=new int[5];
+                int count0=0;
+                int count1=0;
+                int count2=0;
+                double count3=0;
+                int count31=0;
+                int max=0;
+                int s=0;
+                for(int i=0;i<num;i++){
+                    if(arr[i]%2==0 && arr[i]%5==0){
+                        count0=count0+arr[i];
+                    }
+                    if(arr[i]%5==1){
+                        count1=count1+(int)Math.pow((double)-1,(double)s)*arr[i];
+                        s++;
+                    }
+                    if(arr[i]%5==2){
+                        count2++;
+                    }
+                    if(arr[i]%5==3){
+                        count3=count3+arr[i];
+                        count31++;
+                    }
+                    if(arr[i]%5==4 && arr[i]>max){
+                        max=arr[i];
+                    }
+                }
+                a[0]=count0;
+                a[1]=count1;
+                a[2]=count2;
+                a[3]=(int)(count3/count31);
+                a[4]=max;
+                
+                for(int i=0;i<5;i++){
+                    if(i!=4){
+                        if(i==3){
+                            if(a[i]==0){
+                                System.out.print("N"+" ");
+                             }else{
+                                System.out.print(String.format("%.1f", count3/count31)+" ");
+                            }
+                        }else{
+                            if(a[i]==0){
+                                System.out.print("N"+" ");
+                             }else{
+                                System.out.print(a[i]+" ");
+                            }
+                        }
+                    }else{
+                        if(a[i]==0){
+                            System.out.print("N");
+                        }else{
+                             System.out.print(a[i]);
+                        }
+                       
+                    }
+                }
+    }
+}
