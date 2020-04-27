@@ -1,0 +1,50 @@
+
+//1.学分绩点
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int count=sc.nextInt();
+        int[] score=new int[count];
+        int total=0;
+        for(int i=0;i<count;i++){
+            score[i]=sc.nextInt();
+        }
+        int[] port=new int[count];
+        for(int i=0;i<count;i++){
+            port[i]=sc.nextInt();
+        }
+        double num=0;
+        for(int i=0;i<count;i++){
+            total=total+score[i];
+            num=num+score[i]*fun1(port[i]);
+        }
+        System.out.printf("%.2f",num/total);
+    }
+    
+    
+    public static double fun1(int port){
+        if(port>=90){
+            return 4.0;
+        }else if(port>=85){
+            return 3.7;
+        }else if(port>=82){
+            return 3.3;
+        }else if(port>=78){
+            return 3.0;
+        }else if(port>=75){
+            return 2.7;
+        }else if(port>=72){
+            return 2.3;
+        }else if(port>=68){
+            return 2.0;
+        }else if(port>=64){
+            return 1.5;
+        }else if(port>=60){
+            return 1.0;
+        }else{
+            return 0;
+        }
+    }
+}
