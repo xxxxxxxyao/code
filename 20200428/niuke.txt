@@ -1,0 +1,63 @@
+
+//1.数字之和
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int num=sc.nextInt();
+            int a=num;
+            int b=num*num;
+            int count1=0;
+            int count2=0;
+            while(a!=0){
+                count1=count1+a%10;
+                a=a/10;
+            }
+             while(b!=0){
+                count2=count2+b%10;
+                b=b/10;
+            }
+            System.out.println(count1+" "+count2);
+        }
+    }
+}
+
+
+//2.计票统计
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            
+        LinkedHashMap<String,Integer> m=new LinkedHashMap<>();
+        
+        int count=sc.nextInt();
+            sc.nextLine();
+        String[] s=sc.nextLine().split(" ");
+        for(int i=0;i<count;i++){
+            m.put(s[i],0);
+        }
+        int people=sc.nextInt();
+            sc.nextLine();
+        String[] ss=sc.nextLine().split(" ");
+        int num=0;
+        for(int i=0;i<people;i++){
+            if(m.containsKey(ss[i])){
+                 m.put(ss[i],m.get(ss[i])+1);
+            }else{
+                 num++;
+            }
+        }
+         Set<String> set = m.keySet();
+            for(String sss :set){
+                System.out.println(sss+" : "+m.get(sss));
+            }
+        System.out.println("Invalid"+" : "+num);
+        }
+    }
+}
