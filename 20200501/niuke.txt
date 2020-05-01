@@ -1,0 +1,99 @@
+
+//1.守形数
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int num=sc.nextInt();
+            int num2=num*num;
+            int a=fun(num);
+            int b=fun(num2);
+            int count=0;
+            int i=0;
+            while(b-1>0){
+                count=count+(num2%10)*(int)(Math.pow((double)10,(double)i));
+                num2=num2/10;
+                i++;
+                b--;
+            }
+            if(count==num){
+                System.out.println("Yes!");
+            }else{
+                 System.out.println("No!");
+            }
+        }
+    }
+    
+    public static int fun(int num){
+        int count=0;
+        while(num!=0){
+            count++;
+            num=num/10;
+        }
+        return count;
+    }
+}
+
+
+//2.密码验证合格程序
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNextLine()){
+            String s=sc.nextLine();
+            if(fun1(s) && fun2(s) && fun3(s)){
+                System.out.println("OK");
+            }else{
+                System.out.println("NG");
+            }
+        }
+    }
+    
+    public static boolean fun1(String s){
+        if (s==null || s.length()<=8)
+            return false;
+        return true;
+    }
+    
+    public static boolean fun2(String password){
+
+
+int Digit=0 , lowercase=0,uppercase=0,others=0;
+        char[] ch = password.toCharArray();
+        for (int i = 0; i < ch.length; i++) {
+            if (ch[i]>='0'&&ch[i]<='9') {
+                Digit=1;
+                continue;
+            }
+            else if (ch[i]>='a'&&ch[i]<='z') {
+                lowercase=1;
+                continue;
+            }
+            else if (ch[i]>='A'&&ch[i]<='Z') {
+                uppercase=1;
+                continue;
+            }else {
+                others=1;
+                continue;
+            }
+        }
+        int total = Digit+lowercase+uppercase+others;
+        return total>=3 ? true : false;
+    }
+    
+    
+    public static boolean fun3(String s){
+      for(int i=0 ;i<s.length()-2 ;i++){
+            String substr1 =s.substring(i, i+3);
+            if (s.substring(i+1).contains(substr1))
+               return false;
+        }
+        return true;
+      }
+}
+
+
