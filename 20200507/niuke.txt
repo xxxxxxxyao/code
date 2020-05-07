@@ -1,0 +1,60 @@
+//1.年会抽奖
+
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int num=sc.nextInt();
+            float count=fun(num);
+            float son=son(num);
+            float a=(son/count)*100;
+            System.out.println(String.format("%.2f", a)+"%");
+        }
+    }
+    
+    public static float fun(int num){
+        if(num==1){
+            return 1;
+        }
+        return num*fun(num-1);
+    }
+
+ public static float son(int n) {
+        if(n==1){
+            return 0;
+        }
+        if(n==2){
+            return 1;
+        }else{
+            return (n-1)*(son(n-1)+son(n-2));
+        }
+    }
+}
+
+
+//2.数字和为sum的方法数 
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        int count=sc.nextInt();
+        int[] arr=new int[num];
+        for(int i=0;i<num;i++){
+            arr[i]=sc.nextInt();
+        }
+        long dp[]=new long[count+1];
+        dp[0]=1;
+        int i,j;
+        for(i=0;i<num;i++){
+            for(j=count;j>=arr[i];j--){
+               dp[j]=dp[j-arr[i]]+dp[j];
+            }
+        }
+        System.out.println(dp[count]);
+    }
+}
