@@ -1,0 +1,24 @@
+
+//1.说反话
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String[] arr=sc.nextLine().split(" ");
+            Stack<String> s=new Stack<>();
+            for(int i=0;i<arr.length;i++){
+                s.push(arr[i]);
+            }
+            
+            while(!s.empty()){
+                if(s.size()!=1){
+                    System.out.print(s.pop()+" ");
+                }else{
+                    System.out.print(s.pop());
+                }
+            }
+        }
+    }
+}
