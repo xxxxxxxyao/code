@@ -1,0 +1,71 @@
+//1. 2的个数
+
+import java.util.*;
+
+public class Count2 {
+    public int countNumberOf2s(int n) {
+         int count = 0;
+    for (int i = 1; i <= n; i *= 10) {
+        int a = n / i;
+        int b = n % i;
+        count += (a + 7) / 10 * i + ((a % 10 == 2) ? b + 1 : 0);
+    }
+    return count;
+    }
+}
+
+
+
+//2.在霍格沃茨找零钱
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String[] p=sc.next().split("\\.");
+            String[] a=sc.next().split("\\.");
+        int[] arr1 = {Integer.parseInt(p[0]),Integer.parseInt(p[1]),Integer.parseInt(p[2])};
+        int[] arr2 = {Integer.parseInt(a[0]),Integer.parseInt(a[1]),Integer.parseInt(a[2])};
+            int aa=0;
+            int b=0;
+            int c=0;
+            if(arr2[0]>=arr1[0]){
+                 if(arr2[2]>=arr1[2]){
+                c=arr2[2]-arr1[2];
+            }else{
+                int s=arr2[2]+29;
+                c=s-arr1[2];
+                arr2[1] -= 1;
+            }
+            if(arr2[1]>=arr1[1]){
+                b=arr2[1]-arr1[1];
+            }else{
+                int s=arr2[1]+17;
+                b=s-arr1[1];
+                arr2[0] -= 1;
+            }
+             aa=arr2[0]-arr1[0];
+            System.out.println(aa+"."+b+"."+c);
+            }else{
+                 if(arr1[2]>=arr2[2]){
+                c=arr1[2]-arr2[2];
+            }else{
+                int s=arr1[2]+29;
+                c=s-arr2[2];
+                arr1[1] -= 1;
+            }
+            if(arr1[1]>=arr2[1]){
+                b=arr1[1]-arr2[1];
+            }else{
+                int s=arr1[1]+17;
+                b=s-arr2[1];
+                arr1[0] -= 1;
+            }
+             aa=arr1[0]-arr2[0];
+            System.out.println("-"+aa+"."+b+"."+c);
+            }
+           
+        }
+    }
+}
