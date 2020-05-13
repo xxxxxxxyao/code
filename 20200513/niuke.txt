@@ -1,0 +1,111 @@
+//1.上楼梯
+import java.util.*;
+
+public class GoUpstairs {
+    public int countWays(int n) {
+        return fun(n);
+    }
+    
+    public int fun(int num){
+        int a=1;
+        int b=2;
+        int c=4;
+        if(num==1){
+            return a;
+        }
+        if(num==2){
+            return b;
+        }
+        if(num==3){
+            return c;
+        }
+        for(int i=4;i<=num;i++){
+            int tmp=((a+b)%1000000007+c)%1000000007;
+            a=b;
+            b=c;
+            c=tmp;
+        }
+        return c;
+    }
+}
+
+//2.锤子剪刀布
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        sc.nextLine();
+        int awin=0;
+        int ping=0;
+        Map<Character,Integer> map1=new HashMap<>();
+        map1.put('C',0);
+        map1.put('J',0);
+        map1.put('B',0);
+        Map<Character,Integer> map2=new HashMap<>();
+        map2.put('C',0);
+        map2.put('J',0);
+        map2.put('B',0);
+        for(int i=0;i<num;i++){
+            String[] arr=sc.nextLine().split(" ");
+            char a=arr[0].charAt(0);
+            char b=arr[1].charAt(0);
+            if(a==b){
+                ping++;
+            }
+            if((a=='C' && b=='J') || (a=='J' && b=='B') || (a=='B' && b=='C')){
+                awin++;
+                map1.put(a,map1.get(a)+1);
+            }
+            if((b=='C' && a=='J') || (b=='J' && a=='B') || (b=='B' && a=='C')){
+                map2.put(b,map2.get(b)+1);
+            }
+            
+        }
+        char q1='B';
+        char q2='B';
+        char z='C';
+        char x='J';
+        char c='B';
+        int max1=map1.get(z);
+        int max2=map1.get(x);
+        int max3=map1.get(c);
+        if(max1>=max2 && max1>=max3){
+            if(max1>=max2){
+                q1='C';
+            }
+            if(max1==max3){
+                q1='B';
+            }
+        }
+        if(max2>=max1 && max2>=max3){
+            if(max2==max1){
+                q1='C';
+            }
+            else if(max2==max3){
+                q1='B';
+            }
+            else q1='J';
+        }
+        if(max3>=max2 && max3>=max1){
+            q1='B';
+        }
+        int max11=map2.get(z);
+        int max12=map2.get(x);
+        int max13=map2.get(c);
+        if(max11>=max12 && max11>=max13){
+            q2='C';
+        }
+        if(max12>=max11 && max12>=max13){
+            q2='J';
+        }
+        if(max13>=max12 && max13>=max11){
+            q2='B';
+        }
+        
+        System.out.println(awin+" "+ping+" "+(num-awin-ping));
+        System.out.println((num-awin-ping)+" "+ping+" "+awin);
+        System.out.println(q1+" "+q2);
+    }
+}
