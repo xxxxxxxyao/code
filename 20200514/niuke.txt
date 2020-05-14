@@ -1,0 +1,58 @@
+//1.坏键
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine().toUpperCase();
+            String error=sc.nextLine().toUpperCase();
+            
+            Set<Character> set=new HashSet<>();
+            for(int i=0;i<s.length();i++){
+                if(!error.contains(s.charAt(i)+"")){
+                    set.add(s.charAt(i));
+                }
+            }
+            for(int i=0;i<s.length();i++){
+                if(set.contains(s.charAt(i))){
+                    System.out.print(s.charAt(i));
+                    set.remove(s.charAt(i));
+                }
+            }
+        }
+    }
+}
+
+
+//2.球的半径和体积
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            double x=sc.nextFloat();
+            double y=sc.nextFloat();
+            double z=sc.nextFloat();
+            double x1=sc.nextFloat();
+            double y1=sc.nextFloat();
+            double z1=sc.nextFloat();
+            
+            double r=0;
+            double t=0;
+            double xx=x1-x;
+            double yy=y1-y;
+            double zz=z1-z;
+            double w1=Math.pow(xx,(double)2);
+            double w2=Math.pow(yy,(double)2);
+            double w3=Math.pow(zz,(double)2);
+            r=Math.sqrt(w1+w2+w3);
+            t=(4*(Math.acos(-1))*r*r*r)/3;
+            System.out.printf("%.3f",r);
+            System.out.printf(" ");
+            System.out.printf("%.3f",t);
+        }
+    }
+}
