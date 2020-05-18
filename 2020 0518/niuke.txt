@@ -1,0 +1,47 @@
+
+//1.木棒拼图
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+            int num=sc.nextInt();
+            ArrayList<Integer> list=new ArrayList<>(num);
+            String s="No";
+            for(int j=0;j<num;j++){
+                int i=sc.nextInt();
+                int a=sc.nextInt();
+                if(i==1){
+                    list.add(a);
+                    s=judge(list);
+                }
+                if(i==2){
+                   int in=list.indexOf(a);
+                    list.remove(in);
+                   s=judge(list);
+                }
+                System.out.println(s);
+            }
+    }
+    
+    public static String judge(List<Integer> list){
+        if(list.size()<3){
+            return "No";
+        }else{
+            for(int i=0;i<list.size();i++){
+                int a=list.get(i);
+                int sum=0;
+                for(int j=0;j<list.size();j++){
+                if(j!=i){
+                    sum=sum+list.get(j);
+                 }
+                }
+               if(sum<=a){
+                return "No";
+               }
+           }
+            return "Yes";
+      }
+    }
+}
