@@ -1,0 +1,100 @@
+//1.计算日期到天数转换
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+        int year=sc.nextInt();
+        int month=sc.nextInt();
+        int day=sc.nextInt();
+        int[] run={31,29,31,30,31,30,31,31,30,31,30,31};
+        int[] ping={31,28,31,30,31,30,31,31,30,31,30,31};
+        int sum=0;
+            if(year<0 || month>12){
+                System.out.println(-1);
+            }
+        if((year%4)==0 && (year%100)!=0 || year%400==0){
+            //闰年
+            if(run[month-1]<day){
+                System.out.println(-1);
+            }else{
+                for(int i=0;i<month-1;i++){
+                    sum=sum+run[i];
+                }
+                sum=sum+day;
+                System.out.println(sum);
+            }
+        }else{
+             if(ping[month-1]<day){
+                System.out.println(-1);
+            }else{
+                for(int i=0;i<month-1;i++){
+                    sum=sum+ping[i];
+                }
+                sum=sum+day;
+                System.out.println(sum);
+            }
+        }
+        }
+    }
+}
+
+//2.字符串加密解密
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s1=sc.nextLine();
+            String s2=sc.nextLine();
+            StringBuilder s11=new StringBuilder();
+            StringBuilder s22=new StringBuilder();
+            for(int i=0;i<s1.length();i++){
+                char a=s1.charAt(i);
+                if(a=='z'){
+                    s11.append("A");
+                }else if(a=='Z'){
+                    s11.append("a");
+                }else if(a=='9'){
+                    s11.append("0");
+                }else if(a<'z' && a>='a'){
+                    char b=(char)(a+1);
+                    b=(char)(b-32);
+                    s11.append(b);
+                }else if(a<'Z' && a>='A'){
+                    char c=(char)(a+1);
+                    c=(char)(c+32);
+                    s11.append(c);
+                }else if(a>='0' && a<'9'){
+                    char x=(char)(a+1);
+                    s11.append(x);
+                }
+            }
+            for(int i=0;i<s2.length();i++){
+              char a=s2.charAt(i);
+                if(a=='a'){
+                    s22.append("Z");
+                }else if(a=='A'){
+                    s22.append("z");
+                }else if(a=='0'){
+                    s22.append("9");
+                }else if(a<='z' && a>'a'){
+                    char b=(char)(a-1);
+                    b=(char)(b-32);
+                    s22.append(b);
+                }else if(a<='Z' && a>'A'){
+                    char c=(char)(a-1);
+                    c=(char)(c+32);
+                    s22.append(c);
+                }else if(a>'0' && a<='9'){
+                    char x=(char)(a-1);
+                    s22.append(x);
+                }
+            }
+            System.out.println(s11.toString());
+            System.out.println(s22.toString());
+        }
+    }
+}
