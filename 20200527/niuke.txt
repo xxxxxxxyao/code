@@ -1,0 +1,57 @@
+//1.单词倒排
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String q=sc.nextLine();
+            StringBuilder sb=new StringBuilder();
+            for(int i=0;i<q.length();i++){
+                char c=q.charAt(i);
+                if(c<'A' || (c>'Z' && c<'a') || c>'z'){
+                    sb.append("-");
+                }else{
+                    sb.append(c);
+                }
+            }
+            String[] s=sb.toString().split("-");
+            Stack<String> ss=new Stack<>();
+            for(int i=0;i<s.length;i++){
+                ss.push(s[i]);
+            }
+            
+            while(!ss.empty()){
+                if(ss.size()!=1){
+                    System.out.print(ss.pop()+" ");
+                }else{
+                    System.out.print(ss.pop());
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+//2.骆驼命名法
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String[] s=sc.nextLine().split("_");
+            StringBuilder sb=new StringBuilder();
+            sb.append(s[0]);
+            for(int i=1;i<s.length;i++){
+                String q=s[i];
+                char[] arr=q.toCharArray();
+                arr[0]=(char)(arr[0]-32);
+                for(int j=0;j<arr.length;j++){
+                    sb.append(arr[j]);
+                }
+            }
+            System.out.println(sb.toString());
+        }
+    }
+}
