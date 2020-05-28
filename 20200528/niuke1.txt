@@ -1,0 +1,101 @@
+//1.乒乓球筐
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String a=sc.next();
+            String b=sc.next();
+            ArrayList<Character> a1=new ArrayList<>();
+            ArrayList<Character> a2=new ArrayList<>();
+            for(int i=0;i<a.length();i++){
+                char c=a.charAt(i);
+                a1.add(c);
+            }
+            for(int i=0;i<b.length();i++){
+                char c=b.charAt(i);
+                a2.add(c);
+            }
+            
+            for(int j=0;j<a2.size();j++){
+                char cc=a2.get(j);
+                if(a1.contains(cc)){
+                    a1.remove(a1.indexOf(cc));
+                    a2.remove(j);
+                    j--;
+                }
+            }
+            
+            if(a2.size()==0){
+                System.out.println("Yes");
+            }else{
+                System.out.println("No");
+            }
+        }
+    }
+}
+
+//2.查找弟兄单词
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            ArrayList<String> l=new ArrayList<>();
+            ArrayList<String> li=new ArrayList<>();
+            int num=sc.nextInt();
+            for(int i=0;i<num;i++){
+                String s=sc.next();
+                l.add(s);
+            }
+            String find=sc.next();
+            int index=sc.nextInt();
+            int count=0;
+            for(int i=0;i<l.size();i++){
+                String a=l.get(i);
+                if(!a.equals(find)){
+                    if(fun(a,find)){
+                        count++;
+                        li.add(a);
+                    }
+                }
+            }
+            Collections.sort(li);
+            System.out.println(count);
+            if(count>=index)
+                System.out.println(li.get(index-1));
+        }
+    }
+    
+    public static boolean fun(String a,String b){
+        if(a.length()!=b.length()){
+            return false;
+        }
+            ArrayList<Character> a1=new ArrayList<>();
+            ArrayList<Character> a2=new ArrayList<>();
+            for(int i=0;i<a.length();i++){
+                char c=a.charAt(i);
+                a1.add(c);
+            }
+            for(int i=0;i<b.length();i++){
+                char c=b.charAt(i);
+                a2.add(c);
+            }
+            
+            for(int j=0;j<a2.size();j++){
+                char cc=a2.get(j);
+                if(a1.contains(cc)){
+                    a1.remove(a1.indexOf(cc));
+                    a2.remove(j);
+                    j--;
+                }
+            }
+            
+           if(a1.size()==0 && a2.size()==0){
+               return true;
+           }
+        return false;
+    }
+}
