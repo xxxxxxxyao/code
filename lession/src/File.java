@@ -16,8 +16,6 @@ public class File{
        while((line=br.readLine())!=null){
            System.out.println(line);
        }*/
-
-
        char[] c=new char[1024];
        int i;
        while((i=br.read(c,0,7))!=-1){

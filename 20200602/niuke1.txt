@@ -1,0 +1,77 @@
+//1.顺时针打印矩阵
+import java.util.*;
+
+public class Printer {
+    public int[] clockwisePrint(int[][] mat, int n, int m) {
+        int[] arr=new int[m*n];
+        if(mat==null){
+            return arr;
+        }
+        int startx=0;
+        int starty=0;
+        int endx=n-1;
+        int endy=m-1;
+        int k=0;
+        int i=0;
+        int j=0;
+        while(startx<=endx && starty<=endy){
+            //最后一行
+            if(startx==endx){
+                for(;j<=endy;j++,k++){
+                    arr[k]=mat[startx][j];
+                }
+                return arr;
+            }
+            //最后一列
+            if(starty==endy){
+                for(;i<=endx;i++,k++){
+                    arr[k]=mat[i][starty];
+                }
+                return arr;
+            }
+            
+            for(;j<endy;j++,k++){
+                arr[k]=mat[i][j];
+            }
+            
+            for(;i<endx;i++,k++){
+                arr[k]=mat[i][j];
+            }
+            for(;j>starty;j--,k++){
+                arr[k]=mat[i][j];
+            }
+            
+            for(;i>startx;i--,k++){
+                arr[k]=mat[i][j];
+            }
+                i++;
+                j++; 
+                startx++; 
+                starty++; 
+                endx--; 
+                endy--;  
+        }
+        return arr;
+    }
+}
+
+
+//2.左右最值最大差
+import java.util.*;
+
+public class MaxGap {
+    public int findMaxGap(int[] A, int n) {
+        int max=A[0];
+        int min=A[n-1];
+        int k=0;
+        int value=0;
+        for(int i=0;i<n;i++){
+            if(A[i]>max){
+                max=A[i];
+                k=i;
+            }
+        }
+        min=A[0]>A[n-1]?A[n-1]:A[0];
+        return max-min;
+    }
+}
