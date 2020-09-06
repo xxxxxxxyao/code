@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="java_image_server_image:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/java_image_server_image_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="java_image_server_image" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.45" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.2" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.2" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.13" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="java_image_server_image/web/Web" />
+    </root>
+  </artifact>
+</component>
